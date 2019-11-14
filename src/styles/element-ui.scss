@@ -1,0 +1,95 @@
+         //to reset element-ui default css
+         .el-upload {
+             input[type="file"] {
+                 display: none !important;
+             }
+         }
+         
+         .el-upload__input {
+             display: none;
+         }
+         
+         //暂时性解决diolag 问题 https://github.com/ElemeFE/element/issues/2461
+         .el-dialog {
+             transform: none;
+             left: 0;
+             position: relative;
+             margin: 0 auto;
+         }
+         
+         //element ui upload
+         .upload-container {
+             .el-upload {
+                 width: 100%;
+                 .el-upload-dragger {
+                     width: 100%;
+                     height: 200px;
+                 }
+             }
+         }
+         
+         //  table标签页重置
+         .el-tabs--card>.el-tabs__header .el-tabs__nav {
+             border: none;
+         }
+         
+         .el-tabs--card>.el-tabs__header .el-tabs__item {
+             border-left: none;
+             background-color: #F3F3F3;
+         }
+         
+         .el-tabs__item.is-active {
+             background-color: blue;
+         }
+         
+         .el-tabs__item {
+             font-size: 16px;
+         }
+         
+         .el-tabs--card>.el-tabs__header {
+             border-bottom: 0!important;
+         }
+         
+         //  Radio 单选框
+         .el-radio-button__inner {
+             border: none;
+             border-left: none!important;
+         }
+         
+         //  时间框
+         .order-date {
+             .el-input__inner {
+                 width: 133px;
+                 height: 30px;
+                 padding-left: 24px;
+             }
+             .el-input__prefix {
+                 color: #fff;
+             }
+             .el-input__suffix {
+                 right: 20px;
+                 top: -5px;
+             }
+         }
+         
+         //  input 输入框
+         .el-date-editor.el-input {
+             width: 190px;
+         }
+         
+         //  时间框
+         .time {
+             width: 150px!important;
+         }
+         
+         .el-form-item {
+             margin-bottom: 30px;
+         }
+         
+         //  订单新建表格样式框
+         .input-table {
+             .el-input__inner {
+                 border-radius: 0!important;
+             }
+         }
+         
