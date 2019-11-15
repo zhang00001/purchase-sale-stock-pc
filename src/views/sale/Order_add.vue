@@ -16,6 +16,7 @@
               >发送物流提醒短信</el-button>
               <el-button
                 type="primary"
+                @click="print"
                 v-if="this.status=='1'||this.status=='2'||this.status=='3'||this.status=='4'||this.status=='5'"
               >打印</el-button>
               <el-button
@@ -476,6 +477,9 @@ export default {
   },
 
   methods: {
+    print() {
+      this.$common.printPdf("sale", this.$route.query.id);
+    },
     hidedialogVisible(e) {
       this.dialogVisible = false;
     },
@@ -484,7 +488,7 @@ export default {
         path: "/purchase/newBuild",
         query: {
           status: "27",
-          id: this.$route.query.id,
+          id: this.datanames.outstock_id,
           type: "1"
         }
       });

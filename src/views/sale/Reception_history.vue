@@ -51,6 +51,7 @@
                   type="text"
                   size="small"
                 >{{scope.row.status1}}</el-button>
+                <el-button @click="print(scope.row)" type="text" size="small">打印</el-button>
               </template>
             </el-table-column>
             <el-table-column prop="number" label="零售订单编号"></el-table-column>
@@ -110,6 +111,9 @@ export default {
     this.getData(1);
   },
   methods: {
+    print(row) {
+      this.$common.printPdf("sale_cash", row.id);
+    },
     handleCurrentChange(e) {
       this.getData(e);
     },

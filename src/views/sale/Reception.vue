@@ -10,7 +10,7 @@
           <div class="nav-btn">
             <!-- type=1  状态 1已零售 2已撤销 -->
 
-            <el-button type="primary" v-if="this.status=='1'">打印</el-button>
+            <el-button type="primary" @click="print" v-if="this.status=='1'">打印</el-button>
           </div>
         </div>
         <div class="box-card">
@@ -246,6 +246,9 @@ export default {
   },
 
   methods: {
+    print() {
+      this.$common.printPdf("sale_cash", this.$route.query.id);
+    },
     hidedialogVisible(e) {
       this.dialogVisible = false;
     },

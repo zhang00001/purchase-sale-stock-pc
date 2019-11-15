@@ -39,6 +39,7 @@
         <el-table-column label="操作" width="100" align="center">
           <template slot-scope="scope">
             <el-button @click="look(scope.row.status2, scope.row.id)" type="text" size="small">查看</el-button>
+            <el-button @click="print(scope.row)" type="text" size="small">打印</el-button>
           </template>
         </el-table-column>
         <el-table-column prop="status1" label="状态" align="center"></el-table-column>
@@ -52,35 +53,35 @@
         <el-table-column prop="des" label="备注" align="center"></el-table-column>
       </el-table>
       <el-pagination
-				@current-change="handleCurrentChange"
-				:page-size="10"
-				layout="total, prev, pager, next"
-				:total="total">
-			</el-pagination>
+        @current-change="handleCurrentChange"
+        :page-size="10"
+        layout="total, prev, pager, next"
+        :total="total"
+      ></el-pagination>
     </div>
   </div>
 </template>
 
 <script>
-import { enumReturnOrder } from "@/utils/enums"
-import selectDdate from "@/components/select-date"
+import { enumReturnOrder } from "@/utils/enums";
+import selectDdate from "@/components/select-date";
 import {
   supplierSelectList,
   warehouseSelectList,
   retreatList
-} from "@/api/api.js"
+} from "@/api/api.js";
 export default {
   components: {
     selectDdate
-	},
+  },
 
-	// 监听表头搜索状态
-	watch: {
-		headerStatus(newVal) {
-			this.form.status = newVal
-			this.init()
-		}
-	},
+  // 监听表头搜索状态
+  watch: {
+    headerStatus(newVal) {
+      this.form.status = newVal;
+      this.init();
+    }
+  },
 
   data() {
     return {
@@ -88,64 +89,67 @@ export default {
       supplierList: [], // 供应商列表
       warehouseList: [], // 仓库列表
       form: {
-				start_time: "",
-				end_time: ""
-			},
+        start_time: "",
+        end_time: ""
+      },
       // 当前选中状态
-			headerStatus: '',
-			listQuery: {
-				size: 10,
-				page: 1,
-			},
-			total: 0,
+      headerStatus: "",
+      listQuery: {
+        size: 10,
+        page: 1
+      },
+      total: 0,
       tableData: [],
-			firstArr: [{ id: null, name: '全部' }], // 下拉列表全部
-    }
-	},
-	
+      firstArr: [{ id: null, name: "全部" }] // 下拉列表全部
+    };
+  },
+
   created() {
-    this.init()
-    this.getSelectValue()
+    this.init();
+    this.getSelectValue();
   },
 
   methods: {
+    print(row) {
+      this.$common.printPdf("purchase_retreat", row.id);
+    },
     init(start_time, end_time) {
       retreatList({
         params: {
-					...this.form,
-					...this.listQuery,
-					start_time: start_time,
-					end_time: end_time
+          ...this.form,
+          ...this.listQuery,
+          start_time: start_time,
+          end_time: end_time
         }
       }).then(res => {
         if (res.code == 200) {
-          this.tableData = res.list.data
-          this.total = res.list.total
+          this.tableData = res.list.data;
+          this.total = res.list.total;
         } else {
-          this.$message.error(res.message)
+          this.$message.error(res.message);
         }
-      })
-		},
+      });
+    },
 
     // 查询供应商下拉列表
     getSelectValue() {
       supplierSelectList().then(res => {
         if (res.code === 200) {
-					this.supplierList = this.firstArr.concat(res.data)
+          this.supplierList = this.firstArr.concat(res.data);
         } else {
-					this.$message.error(res.message)
-				}
-      })
+          this.$message.error(res.message);
+        }
+      });
     },
 
     // 点击查询
     search() {
-      this.init()
+      this.init();
     },
 
     // 新建销售订单
     goBuild() {
-      this.$router.push({ path: "/purchase/newBuild", query: { order: "2" } })
+      this.$router.push({ path: "/purchase/newBuild", query: { order: "2" } });
     },
 
     // 查看
@@ -153,23 +157,23 @@ export default {
       this.$router.push({
         path: "/purchase/newBuild",
         query: { status: status, id: id, type: "1" }
-      })
-		},
-		
-		// 点击序号
+      });
+    },
+
+    // 点击序号
     handleCurrentChange(val) {
-			this.listQuery.page = val
-      this.init()
-		},
-		
-		handleSelectionChange() {}
+      this.listQuery.page = val;
+      this.init();
+    },
+
+    handleSelectionChange() {}
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
 /deep/.order-date {
-	margin-left: 179px!important;
+  margin-left: 179px !important;
 }
 /deep/.date-time {
   .date {

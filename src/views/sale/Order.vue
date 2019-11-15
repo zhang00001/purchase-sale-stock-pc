@@ -49,7 +49,7 @@
             <el-table-column fixed label="操作" width="100">
               <template slot-scope="scope">
                 <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
-                <el-button type="text" size="small">打印</el-button>
+                <el-button @click="print(scope.row)" type="text" size="small">打印</el-button>
               </template>
             </el-table-column>
             <el-table-column prop="status1" label="状态"></el-table-column>
@@ -114,6 +114,9 @@ export default {
     this.getData(1);
   },
   methods: {
+    print(row) {
+      this.$common.printPdf("sale", row.id);
+    },
     changeStatus() {
       this.getData(1);
     },

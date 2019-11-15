@@ -1,8 +1,8 @@
 <template>
   <div>
     <el-table :data="tableData" border style="width: 100%" size="mini">
-      <el-table-column label="操作">
-        <template slot="header">
+      <el-table-column>
+        <template slot="header" slot-scope="scope">
           <el-button type="text" @click="setColor">新增</el-button>
         </template>
         <template slot-scope="scope">
@@ -15,8 +15,8 @@
       <el-table-column label="款式" prop="style"></el-table-column>
       <el-table-column label="库存预警" prop="stock_warning">
         <template slot-scope="scope">
-          <template v-if="scope.row.scope=='0'">启用</template>
-          <template v-else>停用</template>
+          <template v-if="scope.row.stock_warning=='0'">启用</template>
+          <template v-if="scope.row.stock_warning=='1'">停用</template>
         </template>
       </el-table-column>
       <el-table-column label="上限" prop="stock_upper"></el-table-column>

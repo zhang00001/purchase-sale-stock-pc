@@ -92,18 +92,18 @@
           </template>
         </el-table-column>-->
         <el-table-column prop="create_time" label="交易时间" align="center"></el-table-column>
-        <el-table-column prop="number" label="交易单号" align="center"></el-table-column>
+        <el-table-column prop="business_number" label="交易单号" align="center"></el-table-column>
         <el-table-column prop="account_type_name" label="交易类型" align="center"></el-table-column>
 
-        <el-table-column prop="relation_number" label="单据编号" align="center"></el-table-column>
-        <el-table-column prop="type1" label="支付类型" align="center"></el-table-column>
-        <el-table-column prop="number" label="交易金额" align="center"></el-table-column>
+        <el-table-column prop="business_number" label="单据编号" align="center"></el-table-column>
+        <el-table-column prop="set_account_name" label="支付类型" align="center"></el-table-column>
+        <el-table-column prop="in_amount" label="交易金额" align="center"></el-table-column>
 
-        <el-table-column prop="number" label="操作人" align="center"></el-table-column>
-        <el-table-column prop="number" label="操作人所属门店" align="center"></el-table-column>
+        <el-table-column prop="maker_name" label="操作人" align="center"></el-table-column>
+        <el-table-column prop="store_name" label="操作人所属门店" align="center"></el-table-column>
 
-        <el-table-column prop="number" label="交易状态" align="center"></el-table-column>
-        <el-table-column prop="number" label="退款状态" align="center"></el-table-column>
+        <!-- <el-table-column prop="number" label="交易状态" align="center"></el-table-column>
+        <el-table-column prop="number" label="退款状态" align="center"></el-table-column>-->
 
         <!-- <el-table-column prop="type1" label="业务类型" align="center"></el-table-column>
       

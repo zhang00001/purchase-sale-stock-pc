@@ -58,15 +58,15 @@
 					<el-button type="primary" @click="sure" class="new-add">新建盘点单</el-button>
 				</div>
 				
-				<div v-if="status=='1' || status=='2' || status=='3' || status=='4' || status=='5' || status=='6' ||  status=='7' || status=='8' || status=='9' || status=='10' || status=='11' ||  status=='12' || status=='13' || status=='16' || status=='17' || status=='18' || status=='19' || status=='20' || status=='29' || status=='30' || status=='35'">
-					<el-button type="primary" @click="sure" class="ml-20">打印</el-button>
+				<div v-if="status=='1' || status=='2' || status=='3' || status=='4' || status=='5' || status=='6' ||  status=='7' || status=='8' || status=='9' || status=='10' || status=='11' ||  status=='12' || status=='13'  || status=='17' || status=='18' || status=='19' || status=='20' || status=='29' || status=='30' || status=='35'">
+					<el-button type="primary" @click="print" class="ml-20">打印</el-button>
 				</div>
 
-				<div v-if="status=='5' || status=='1' || status=='2' || status=='3' || status=='4'  || status=='9' || status=='10' || status=='11' ||  status=='12' || status=='13' || status=='16' || status=='17' || status=='18' || status=='19' || status=='20'">
+				<div v-if="status=='5' || status=='1' || status=='2' || status=='3' || status=='4'  || status=='9' || status=='10' || status=='11' ||  status=='12' || status=='13'  || status=='17' || status=='18' || status=='19' || status=='20'">
 					<el-button type="primary" @click="sure" class="new-add">打印条码</el-button>
 				</div>
 
-				<div v-if="status=='11' || status=='16'">
+				<div v-if="status=='11' ">
 					<el-button type="primary" @click="sure" class="new-add">筛出有货并新增</el-button>
 				</div>
 
@@ -82,7 +82,7 @@
 					<el-button type="primary" @click="sure" class="ml-20">新增配货单</el-button>
 				</div>
 
-				<div v-if="status=='9' || status=='10' || status=='11' || status=='12' || status=='13' || status=='16'">
+				<div v-if="status=='9' || status=='10' || status=='11' || status=='12' || status=='13' ">
 					<el-button type="primary" @click="sure" class="ml-20">新增配货退货单</el-button>
 				</div>
 
@@ -102,13 +102,13 @@
 					<el-button type="primary" @click="sure">新增采购退货购单</el-button>
 				</div>
 
-				<div v-if="status=='11' || status=='10' || status=='12' || status=='16'" class="new-add">
+				<div v-if="status=='11' || status=='10' || status=='12'" class="new-add">
 					<el-button type="primary" @click="sure">复制为调拨单</el-button>
 					<el-button type="primary" @click="sure">复制为配货退货单</el-button>
 					<el-button type="primary" @click="sure">复制为采购单</el-button>
 				</div>
 
-				<div v-if="status=='11' || status=='16'">	
+				<div v-if="status=='11' ">	
 					<el-button type="primary" @click="sure" class="new-add">复制为生产单</el-button>
 				</div>
 
@@ -1080,7 +1080,32 @@ data() {
 		this.trigger()
 	},
 
-  methods: {
+  methods: { 
+	  
+	  print(row) {
+	  let printStatus=""
+	//   采购-采购订单
+	  if(this.status=='1'||this.status=='2'||this.status=='3'||this.status=='4'||this.status=='5'){
+		  printStatus="purchase"
+	  }
+	  //   采购-采购退货
+	  if(this.status=='6'||this.status=='7'||this.status=='8'){
+		  printStatus="purchase_retreat"
+	  }
+	//   配货--配货订单
+	  if(this.status=='9'||this.status=='10'||this.status=='11'||this.status=='12'||this.status=='13'){
+		  printStatus="cargo"
+	  }
+	    //  已出库
+	  if(this.status=='30'||this.status=='31'){
+		  printStatus="outstock_out"
+	  }
+	     //  已入库
+	  if(this.status=='35'||this.status=='36'){
+		  printStatus="outstock_in"
+	  }
+      this.$common.printPdf(printStatus,this.$route.query.id);
+    },
 		getTotals(sum, newData) {
 			this.sum = sum 
 			this.newData = newData

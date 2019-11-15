@@ -10,7 +10,11 @@
           <div class="nav-btn">
             <!-- type=1  状态  草稿3   已退货1  已撤销2-->
 
-            <el-button type="primary" v-if="this.status=='3'||this.status=='1'||this.status=='2'">打印</el-button>
+            <el-button
+              type="primary"
+              @click="print"
+              v-if="this.status=='3'||this.status=='1'||this.status=='2'"
+            >打印</el-button>
 
             <el-button
               type="primary"
@@ -275,6 +279,9 @@ export default {
   },
   watch: {},
   methods: {
+    print() {
+      this.$common.printPdf("retreat", this.$route.query.id);
+    },
     culmTotal() {
       this.Alltotal = this.total - this.form.small;
     },

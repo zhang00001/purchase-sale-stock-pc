@@ -64,9 +64,9 @@ export function getLodop(oOBJECT, oEMBED) {
     var strHtmChrome =
         "<br><br><font color='#FF00FF'>(如果此前正常，仅因浏览器升级或重安装而出问题，需重新执行以上安装）</font>"
     var strCLodopInstall =
-        "<br><font color='#FF00FF'>CLodop云打印服务(localhost本地)未安装启动!点击这里<a href='http://www.lodop.net/download/CLodop_Setup_for_Win32NT_https_3.046Extend.zip' download target='_self'>执行安装</a>,安装后请刷新页面。</font>"
+        "<br><font color='#FF00FF'>CLodop云打印服务(localhost本地)未安装启动!点击这里<a href='http://jxcback.dachunongchang.com/static/Lodop6.226_Clodop3.092.zip' download target='_self'>执行安装</a>,安装后请刷新页面。</font>"
     var strCLodopUpdate =
-        "<br><font color='#FF00FF'>CLodop云打印服务需升级!点击这里<a href='http://www.lodop.net/download/CLodop_Setup_for_Win32NT_https_3.046Extend.zip' download target='_self'>执行升级</a>,升级后请刷新页面。</font>"
+        "<br><font color='#FF00FF'>CLodop云打印服务需升级!点击这里<a href='http://jxcback.dachunongchang.com/static/Lodop6.226_Clodop3.092.zip' download target='_self'>执行升级</a>,升级后请刷新页面。</font>"
     var LODOP
     try {
         var isIE =
