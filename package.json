@@ -13,7 +13,7 @@
         "@tinymce/tinymce-vue": "^3.0.1",
         "animated-number-vue": "^1.0.0",
         "area-data": "^5.0.6",
-        "axios": "^0.18.1",
+        "axios": "^0.21.1",
         "echarts": "^4.2.1",
         "element-ui": "^2.10.1",
         "file-saver": "^2.0.2",
