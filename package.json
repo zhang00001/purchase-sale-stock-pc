@@ -22,7 +22,7 @@
         "lite-server": "^2.5.3",
         "normalize.css": "^8.0.0",
         "nprogress": "^0.2.0",
-        "qs": "^6.7.0",
+        "qs": "^6.7.3",
         "tinymce": "^5.0.14",
         "v-charts": "^1.19.0",
         "v-distpicker": "^1.0.20",
